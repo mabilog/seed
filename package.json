@@ -15,13 +15,16 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@payload-enchants/cached-local-api": "^1.2.2",
     "@payloadcms/db-mongodb": "latest",
     "@payloadcms/next": "latest",
     "@payloadcms/payload-cloud": "latest",
     "@payloadcms/richtext-lexical": "latest",
+    "@payloadcms/translations": "^3.4.0",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
     "next": "15.0.3",
+    "next-intl": "^3.26.0",
     "payload": "latest",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
