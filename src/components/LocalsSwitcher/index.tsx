@@ -21,7 +21,6 @@ const LocaleSwitcher = () => {
 
   return (
     <label>
-      <p>Change Language</p>
       <select defaultValue={localeActive} onChange={onSelectChange}>
         {Object.keys(localesData).map((locale) => {
           const { value, label } = localesData[locale as Locale]

@@ -13,6 +13,7 @@ import { fr } from '@payloadcms/translations/languages/fr'
 import { collections } from './payload/collections'
 import { Users } from './payload/collections/Users'
 import { locales } from './payload/locales'
+import { globals } from './payload/globals'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,6 +26,7 @@ export default buildConfig({
     },
   },
   collections,
+  globals,
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

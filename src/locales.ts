@@ -7,14 +7,14 @@ export const localesData = {
   en: {
     value: 'en',
     dir: 'ltr',
-    label: 'English',
+    label: '🇺🇸',
     abbreviation: 'EN',
     countryCode: 'US',
   },
   fr: {
     value: 'fr',
     dir: 'ltr',
-    label: 'Francais',
+    label: '🇫🇷',
     abbreviation: 'FR',
     countryCode: 'FR',
   },

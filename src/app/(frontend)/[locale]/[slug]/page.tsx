@@ -35,9 +35,6 @@ type Props = {
 }
 
 const queryPageBySlug = async ({ locale, slug }: { locale: Locale; slug: string }) => {
-  // console.log('locale: ', locale)
-  // console.log('slug: ', slug)
-
   const payload = await getPayload({ config })
 
   const result = await payload.find({
@@ -51,7 +48,6 @@ const queryPageBySlug = async ({ locale, slug }: { locale: Locale; slug: string 
     locale,
   })
 
-  // console.log('result.docs?.[0]: ', result.docs?.[0])
   return result.docs?.[0] || null
 }
 
@@ -76,8 +72,6 @@ const Page = async ({ params: paramsPromise }: Props) => {
       </div>
     )
   }
-
-  // console.log('page: ', page)
 
   return (
     <div>
