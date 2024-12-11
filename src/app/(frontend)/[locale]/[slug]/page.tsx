@@ -5,28 +5,6 @@ import config from '@payload-config'
 import { Page as PageType } from '@/payload-types'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 
-export async function generateStaticParams() {
-  const payload = await getPayload({ config })
-  const pages = await payload.find({
-    collection: 'pages',
-    select: {
-      slug: true,
-    },
-  })
-
-  const params = pages.docs
-    ?.filter((doc) => {
-      return doc.slug !== 'index'
-    })
-    .map(({ slug }) => {
-      return { slug }
-    })
-
-  console.log('params ', params)
-
-  return 'hello'
-}
-
 type Props = {
   params: Promise<{
     locale: Locale

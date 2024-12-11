@@ -1,8 +1,8 @@
 import { NextIntlClientProvider } from 'next-intl'
-import { getMessages, setRequestLocale } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
 import React, { ReactNode } from 'react'
 import { getLocale } from 'next-intl/server'
-import LocaleSwitcher from '@/components/LocalsSwitcher'
+import LocaleSwitcher from '@/components/LocaleSwitcher'
 
 import './globals.css'
 import Header from '@/payload/globals/Header/Component'

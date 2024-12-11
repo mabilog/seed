@@ -2,7 +2,7 @@
 import React from 'react'
 
 import type { Header } from '@/payload-types'
-import { Link, usePathname } from '@/i18n/routing'
+import { Link } from '@/i18n/routing'
 import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
