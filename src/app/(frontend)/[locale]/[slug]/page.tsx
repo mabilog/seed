@@ -3,7 +3,9 @@ import { defaultLocale, Locale } from '@/locales'
 import config from '@payload-config'
 
 import { Page as PageType } from '@/payload-types'
+
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { PayloadRedirects } from '@/components/PayloadRedirects'
 
 type Props = {
   params: Promise<{
@@ -31,6 +33,7 @@ const queryPageBySlug = async ({ locale, slug }: { locale: Locale; slug: string 
 
 const Page = async ({ params: paramsPromise }: Props) => {
   let { locale, slug } = await paramsPromise
+  const url = '/' + slug
 
   if (!slug) {
     slug = 'index'
@@ -44,15 +47,17 @@ const Page = async ({ params: paramsPromise }: Props) => {
   page = await queryPageBySlug({ locale, slug })
 
   if (!page) {
+    // return <PayloadRedirects url={url} />
     return (
       <div>
-        <h1>404 not found</h1>
+        <h1>404 page not found</h1>
       </div>
     )
   }
 
   return (
     <div>
+      <PayloadRedirects disableNotFound url={url} />
       <RenderBlocks blocks={page.layout} />
     </div>
   )
