@@ -5,10 +5,7 @@ import config from '@payload-config'
 import { Page as PageType } from '@/payload-types'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { Metadata } from 'next'
-import { getServerSideURL } from '@/utilities/getURL'
-import { notFound } from 'next/navigation'
-import { locales } from '@/payload/locales'
+import { Button } from '@/components/ui/button'
 
 type Props = {
   params: Promise<{
@@ -66,6 +63,7 @@ const Page = async ({ params: paramsPromise }: Props) => {
 
   return (
     <div>
+      <Button>Click me!</Button>
       <RenderBlocks blocks={page.layout} />
     </div>
   )
