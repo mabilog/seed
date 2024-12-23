@@ -33,11 +33,6 @@ export const CMSLink: React.FC<CMSLinkType> = async (props) => {
     url,
   } = props
 
-  if (typeof reference?.value === 'object')
-    console.log('reference?.value.slug: ', reference?.value?.slug)
-
-  // const thing = await findBySlug(reference?.value?.slug)
-
   const href =
     type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
       ? `${reference?.relationTo !== 'pages' ? `/${reference?.relationTo}` : ''}/${reference.value.slug}`
