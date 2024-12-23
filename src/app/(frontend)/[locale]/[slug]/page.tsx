@@ -26,6 +26,100 @@ interface LocalizedSlug {
 
 const payload = await getPayload({ config })
 
+// function generateAlternateUrls(result: LocalizedSlug) {
+//   if (!result?.slug) {
+//     return {}
+//   }
+
+//   const baseUrl = getServerSideURL()
+//   const languages: { [key: string]: string } = {}
+
+//   // Generate alternate URLs for each locale
+//   for (const [locale, slug] of Object.entries(result.slug)) {
+//     languages[locale] = `${baseUrl}/${locale}/${slug}`
+//   }
+
+//   // Set canonical to the current locale's URL
+//   const canonical = languages['en'] // Or whichever locale you prefer as canonical
+
+//   return {
+//     alternates: {
+//       languages,
+//       canonical,
+//     },
+//   }
+// }
+
+// export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+//   const { locale, slug } = await params
+
+//   // const payload = await getPayload({ config })
+
+//   const pageID = await payload
+//     .find({
+//       collection: 'pages',
+//       limit: 1,
+//       where: {
+//         slug: {
+//           equals: slug,
+//         },
+//       },
+//       locale: 'en',
+//       select: {},
+//       disableErrors: true,
+//     })
+//     .then(({ docs }) => {
+//       // console.log('docs: ', docs)
+//       return docs?.[0]?.id
+//     })
+
+//   if (!pageID) {
+//     notFound()
+//   }
+
+//   const result = await payload.findByID({
+//     collection: 'pages',
+//     id: pageID,
+//     select: {
+//       slug: true,
+//     },
+//     locale: 'all',
+//     disableErrors: true,
+//   })
+
+//   const slugs = result?.slug as unknown as LocalizedSlug
+
+//   if (!slugs) {
+//     notFound()
+//   }
+
+//   // note: type check
+//   const { alternates } = generateAlternateUrls(slugs)
+
+//   return {
+//     alternates,
+//   }
+// }
+
+// export async function generateStaticParams() {
+//   const pages = await payload.find({
+//     collection: 'pages',
+//     limit: 1000,
+//     overrideAccess: false,
+//     select: {
+//       slug: true,
+//     },
+//     locale: 'all',
+//   })
+//   console.log('locales:', locales)
+
+//   const params = pages.docs?.flatMap(({ slug }) => {
+//     return locales.map((locale) => ({ slug, locale }))
+//   })
+
+//   return params
+// }
+
 const queryPageBySlug = async ({ locale, slug }: { locale: Locale; slug: string }) => {
   const result = await payload.find({
     collection: 'pages',
