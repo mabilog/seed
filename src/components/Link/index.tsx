@@ -3,6 +3,7 @@ import { cn } from '@/utilities/cn'
 
 import { Button, ButtonProps } from '../ui/button'
 import { Page } from '@/payload-types'
+import { findBySlug } from '@/utilities/findBySlug'
 
 type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
@@ -19,7 +20,7 @@ type CMSLinkType = {
   url?: string | null
 }
 
-export const CMSLink: React.FC<CMSLinkType> = (props) => {
+export const CMSLink: React.FC<CMSLinkType> = async (props) => {
   const {
     appearance = 'inline',
     children,
@@ -31,6 +32,11 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     type,
     url,
   } = props
+
+  if (typeof reference?.value === 'object')
+    console.log('reference?.value.slug: ', reference?.value?.slug)
+
+  // const thing = await findBySlug(reference?.value?.slug)
 
   const href =
     type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
@@ -51,6 +57,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
       </Link>
     )
   }
+
   return (
     <Button asChild className={className} size={size} variant={appearance}>
       <Link className={cn(className)} href={href || url || ''} {...newTabProps}>

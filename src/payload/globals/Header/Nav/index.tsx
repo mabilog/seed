@@ -1,17 +1,22 @@
 'use client'
 
 import { CMSLink } from '@/components/Link'
-import { Link } from '@/i18n/routing'
 import React from 'react'
 import { Header as HeaderType } from '@/payload-types'
 
-export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
-  const navItems = header?.navItems || []
+type HeaderNavProps = {
+  header: HeaderType
+  // linkIDs: string | null | undefined | (string | null | undefined)[]
+}
 
+export const HeaderNav: React.FC<HeaderNavProps> = async ({ header }) => {
+  const navItems = header?.navItems || []
+  // console.log('linkIDs yipee: ', linkIDs)
   return (
     <nav className="flex gap-3 items-center">
-      {navItems.map(({ link }, i) => {
-        return <CMSLink key={i} {...link} appearance="link" />
+      {navItems.map(({ link, id }) => {
+        // console.log('link: ', link)
+        return <CMSLink key={id} {...link} appearance="link" />
       })}
     </nav>
   )

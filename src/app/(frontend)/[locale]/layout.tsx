@@ -2,7 +2,6 @@ import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import React, { ReactNode } from 'react'
 import { getLocale } from 'next-intl/server'
-import LocaleSwitcher from '@/components/LocaleSwitcher'
 
 import './globals.css'
 import Header from '@/payload/globals/Header/Component'
@@ -20,7 +19,6 @@ const RootLayout: React.FC<Props> = async ({ children }: Props) => {
       <body>
         <NextIntlClientProvider locale={locale} timeZone="America/New_York" now={new Date()}>
           <Header />
-          <LocaleSwitcher />
           {children}
         </NextIntlClientProvider>
       </body>

@@ -11,12 +11,13 @@ const LocaleSwitcher = () => {
   const pathname = usePathname()
   const localeActive = useLocale()
 
+  console.log('pathname', pathname)
+
   const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const nextLocale = e.target.value
 
-    startTransition(() => {
-      router.replace(pathname, { locale: nextLocale })
-    })
+    router.replace(pathname, { locale: nextLocale })
+    startTransition(() => {})
   }
 
   return (
